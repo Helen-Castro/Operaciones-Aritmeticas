@@ -12,15 +12,12 @@ def mcd_varios_numeros(numeros):
     return resultado
 
 # Función para validar la entrada como un número entero positivo
-def validar_numero(entrada):
+def es_entero_positivo(entrada):
     try:
         numero = int(entrada)
-        if numero >= 0:
-            return True, numero
-        else:
-            return False, None
+        return numero >= 0
     except ValueError:
-        return False, None
+        return False
 
 # Solicitar números al usuario
 numeros = []
@@ -28,11 +25,11 @@ while True:
     entrada = input("Ingrese un número entero positivo (0 para finalizar): ")
     if entrada == '0':
         break
-    es_numero, numero = validar_numero(entrada)
-    if es_numero:
-        numeros.append(numero)
+    if es_entero_positivo(entrada):
+        numeros.append(int(entrada))
     else:
         print("Por favor, ingrese solo números enteros positivos.")
+
 
 # Calcular el MCD
 mcd = mcd_varios_numeros(numeros)
